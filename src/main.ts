@@ -22,7 +22,9 @@ const renderPokemonCards = (pokemonData: any) => {
 		  <img src="${pokemon.sprite}"class="card__image"/>
 			  <div class="card__content">
 				  <h1 class="card__heading">${pokemon.name}</h1>
-				  <p class="card__text">${pokemon.types.join(", ")}</P>
+				  <p class="card__text">${pokemon.name} (#${pokemon.id}) is a ${pokemon.types.join(
+      " and "
+    )} type pokemon.</P>
 			   </div>
 		  </div>`;
   });
