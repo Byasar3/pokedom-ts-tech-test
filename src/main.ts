@@ -1,27 +1,46 @@
 import pokemonArray from "./data/pokemon";
 import "./styles/style.scss";
 
+// --- QUERY SELECTORS ---
 const cardContainer = document.querySelector(".card-container");
 console.log(cardContainer);
+const searchInput = document.querySelector("#search-input");
 
-if (!cardContainer) {
+// --- GUARD CLAUSES ---
+if (!cardContainer || !searchInput) {
   throw new Error("issue with selectors");
 }
 
-// need to run through the array, assign each pokemon to html values
+// --- FUNCTIONS ---
+// function to render pokemon cards
+const renderPokemonCards = (pokemonData) => {
+cardContainer.innerHTML = "";
+	pokemonData.forEach((pokemon) => {
+	  cardContainer.innerHTML += `
+		  <div class="card">
+		  <img src="${pokemon.sprite}"class="card__image"/>
+			  <div class="card__content">
+				  <h1 class="card__heading">${pokemon.name}</h1>
+				  <p class="card__text">${pokemon.types.join(", ")}</P>
+			   </div>
+		  </div>`;
+	});
+}
+
+// --- EVENT HANDLERS ---
+
 const handleRender = () => {
-  cardContainer.innerHTML = "";
-  pokemonArray.forEach((pokemon) => {
-    cardContainer.innerHTML += `
-		<div class="card">
-    	<img src="${pokemon.sprite}"class="card__image"/>
-			<div class="card__content">
-				<h1 class="card__heading">${pokemon.name}</h1>
-				<p class="card__text">${pokemon.types.join(", ")}</P>
-			 </div>
-		</div>`;
-  });
+	renderPokemonCards(pokemonArray)
 };
 
-// EVENT LISTENER
+const handleFilteredRender = (event: Event) => {
+const filteredValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+const filteredPokemon = pokemonArray.filter(pokemon =>
+	pokemon.name.toLowerCase().includes(filteredValue));
+	renderPokemonCards(filteredPokemon);
+}
+
+
+// --- EVENT LISTENERS ---
 window.addEventListener("load", handleRender);
+searchInput.addEventListener("input", handleFilteredRender)
