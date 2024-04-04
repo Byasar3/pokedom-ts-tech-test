@@ -21,8 +21,12 @@ const renderPokemonCards = (pokemonData: any) => {
 		  <div class="card">
 		  <img src="${pokemon.sprite}"class="card__image"/>
 			  <div class="card__content">
-				  <h1 class="card__heading">${pokemon.name}</h1>
-				  <p class="card__text">${pokemon.name} (#${pokemon.id}) is a ${pokemon.types.join(
+				  <h1 class="card__heading">${
+            pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
+          }</h1>
+				  <p class="card__text">${
+            pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
+          } (#${pokemon.id}) is a ${pokemon.types.join(
       " and "
     )} type pokemon.</P>
 			   </div>
