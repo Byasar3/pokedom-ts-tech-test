@@ -19,7 +19,6 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   gap: 1rem;
-  justify-items: center;
 }
 .card-container > .card {
   display: flex;

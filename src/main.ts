@@ -13,9 +13,9 @@ if (!cardContainer || !searchInput) {
 
 // --- FUNCTIONS ---
 // function to render pokemon cards
-const renderPokemonCards = (pokemonData) => {
+const renderPokemonCards = (pokemonData : any) => {
 cardContainer.innerHTML = "";
-	pokemonData.forEach((pokemon) => {
+	pokemonData.forEach((pokemon: any ) => {
 	  cardContainer.innerHTML += `
 		  <div class="card">
 		  <img src="${pokemon.sprite}"class="card__image"/>
