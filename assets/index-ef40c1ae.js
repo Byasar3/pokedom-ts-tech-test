@@ -3,6 +3,6 @@
 		  <img src="${t.sprite}"class="card__image"/>
 			  <div class="card__content">
 				  <h1 class="card__heading">${t.name}</h1>
-				  <p class="card__text">${t.types.join(", ")}</P>
+				  <p class="card__text">${t.name} (#${t.id}) is a ${t.types.join(" and ")} type pokemon.</P>
 			   </div>
 		  </div>`})},u=()=>{m(a)},h=r=>{const t=r.target.value.trim().toLowerCase(),p=a.filter(o=>o.name.toLowerCase().includes(t));m(p)},k=r=>{const t=parseInt(r.target.value),p=a.slice(0,t);m(p)};window.addEventListener("load",u);c.addEventListener("input",h);g.addEventListener("change",k);
